@@ -1,0 +1,884 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Ankur &amp; Tanisha &middot; 21 November 2026</title>
+
+<meta name="description" content="Ankur &amp; Tanisha are getting married. Join us in Bhopal, 20-21 November 2026." />
+<meta name="theme-color" content="#0b2e23" />
+<!-- What WhatsApp and the rest show when the link is shared. These have to be
+     absolute addresses - a preview is fetched by somebody else's server, which
+     has no idea what the page's own folder is - so they name the GitHub Pages
+     site directly. -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ankur &amp; Tanisha" />
+<meta property="og:title" content="Ankur &amp; Tanisha &middot; #TheANTIqueStory" />
+<meta property="og:description" content="With the blessings of our families, we invite you to our wedding. 20-21 November 2026, Bhopal." />
+<meta property="og:url" content="https://ankurvipul.github.io/invitation/" />
+<meta property="og:image" content="https://ankurvipul.github.io/invitation/preview.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  /* the dark half of the page is the same green as the gate, so opening the
+     doors feels like stepping into the same room rather than onto a new page */
+  --green:#0b2e23;
+  --green-lo:#061d16;
+  --green-hi:#144936;
+  --cream:#f6efe1;
+  --cream-2:#ece0ca;
+  --gold:#d8b265;
+  --gold-lo:#9c7a3c;
+  --wine:#4a1f2e;
+  --muted:#9a9089;
+  --script:"Allura", cursive;
+  --serif:"Cormorant Garamond", Georgia, serif;
+  --disp:"Cinzel", Georgia, serif;
+  --fig:"Playfair Display", Georgia, serif;
+  --pad:clamp(20px, 6vw, 48px);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--green); color:var(--cream);
+  font-family:var(--serif); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+img{max-width:100%; display:block}
+a{color:inherit}
+
+/* ---------- shared bits ---------- */
+.wrap{max-width:720px; margin:0 auto; padding:0 var(--pad); position:relative; z-index:2}
+section{position:relative; padding:clamp(64px,13vw,120px) 0; overflow:hidden}
+.light{background:var(--cream); color:#2c2722}
+.light .eyebrow{color:var(--gold-lo)}
+.light .rule i{background:var(--gold-lo)}
+
+.eyebrow{
+  font-family:var(--disp); font-size:11px; letter-spacing:.42em;
+  text-transform:uppercase; color:var(--gold); text-align:center;
+  margin:0 0 18px;
+}
+h2{
+  font-family:var(--script); font-weight:400;
+  font-size:clamp(38px,9.5vw,60px); line-height:1.05;
+  margin:0 0 6px; text-align:center;
+}
+.lede{
+  text-align:center; max-width:30em; margin:18px auto 0;
+  font-size:clamp(16px,4.2vw,19px); font-weight:300; line-height:1.8;
+}
+.rule{display:flex; align-items:center; justify-content:center; gap:12px; margin:22px 0 4px}
+.rule i{display:block; height:1px; width:min(90px,18vw); background:var(--gold); opacity:.5}
+.rule svg{width:16px; height:16px; fill:var(--gold); opacity:.85}
+
+/* ---------- reveal on scroll ---------- */
+.rv{opacity:0; transform:translateY(26px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){ .rv{opacity:1; transform:none; transition:none} }
+
+/* ---------- the gate ---------- */
+#gate{
+  position:fixed; inset:0; z-index:90; cursor:pointer;
+  perspective:1600px; perspective-origin:50% 42%;
+  transition:opacity .8s ease 1s, visibility .8s 1s;
+}
+#gate.open{opacity:0; visibility:hidden; pointer-events:none}
+
+/* warm light spilling through the moment the doors part */
+#gate .glow{
+  position:absolute; inset:0; opacity:0; transition:opacity 1s ease .25s;
+  background:radial-gradient(52% 40% at 50% 44%, rgba(243,219,164,.55), transparent 72%);
+}
+#gate.open .glow{opacity:1}
+
+.door{
+  position:absolute; top:0; bottom:0; width:50.3%; overflow:hidden;
+  background:linear-gradient(104deg,#07251c 0%,#0f3b2c 44%,#092a20 100%);
+  box-shadow:inset 0 0 70px rgba(0,0,0,.55);
+  transition:transform 1.6s cubic-bezier(.58,.02,.28,1);
+  backface-visibility:hidden;
+}
+.door.l{left:0;  transform-origin:left center}
+.door.r{right:0; transform-origin:right center}
+#gate.open .door.l{transform:rotateY(-112deg)}
+#gate.open .door.r{transform:rotateY( 112deg)}
+
+/* a border, and a finer line inside it - held off the meeting edge so the two
+   doors read as one centre post rather than two lines side by side */
+.door .frame{position:absolute; border:1.5px solid rgba(228,195,121,.72)}
+.door.l .frame{inset:16px 34px 16px 16px}
+.door.r .frame{inset:16px 16px 16px 34px}
+.door .frame::after{content:""; position:absolute; inset:7px; border:1px solid rgba(228,195,121,.3)}
+
+/* half of one tall arch each, so it breaks apart as the doors swing */
+.door .arch{
+  position:absolute; top:14%; height:44%; width:150%; overflow:hidden;
+  border:2px solid rgba(228,195,121,.9); border-bottom:none;
+  border-radius:50% 50% 0 0 / 62% 62% 0 0;
+  background:rgba(228,195,121,.05);
+  box-shadow:0 0 30px rgba(216,178,101,.16), inset 0 0 40px rgba(0,0,0,.35);
+}
+.door.l .arch{left:25%}
+.door.r .arch{right:25%}
+
+/* the jali screen, kept inside the arch where it belongs */
+.door .jali{
+  position:absolute; inset:0; opacity:.34;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%23e4c379' stroke-width='.8'%3E%3Cpath d='M20 0 40 20 20 40 0 20Z'/%3E%3Ccircle cx='20' cy='20' r='4'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:40px 40px;
+}
+
+/* a rail under the arch, and a plain lower panel with a diamond boss */
+.door .rail{
+  position:absolute; top:63%; height:1.5px; left:34px; right:34px;
+  background:linear-gradient(90deg,transparent,rgba(228,195,121,.85),transparent);
+}
+.door .lower{
+  position:absolute; top:69%; bottom:62px; left:38px; right:38px;
+  border:1px solid rgba(228,195,121,.34);
+}
+.door .lower::after{
+  content:""; position:absolute; left:50%; top:50%; width:30px; height:30px;
+  margin:-15px 0 0 -15px; transform:rotate(45deg);
+  border:1px solid rgba(228,195,121,.5);
+}
+.door.l .rail{right:34px; left:28px}
+.door.r .rail{left:34px; right:28px}
+
+/* the meeting edge: one gold post with studs down it */
+.door .stile{
+  position:absolute; top:0; bottom:0; width:30px;
+  background:linear-gradient(90deg, rgba(228,195,121,0), rgba(228,195,121,.3));
+}
+.door.l .stile{right:0}
+.door.r .stile{left:0; transform:scaleX(-1)}
+.door .studs{
+  position:absolute; top:7%; bottom:7%; width:9px;
+  background-image:radial-gradient(circle, rgba(246,226,176,.95) 0 2px, rgba(216,178,101,0) 2.7px);
+  background-size:9px 52px;
+}
+.door.l .studs{right:10px}
+.door.r .studs{left:10px}
+
+/* the handle you press */
+.latch{
+  position:absolute; left:50%; top:42%; transform:translate(-50%,-50%);
+  width:clamp(106px,30vw,150px); aspect-ratio:1; border-radius:50%;
+  display:grid; place-items:center;
+  background:radial-gradient(circle at 36% 30%, #124535 0%, #0b3025 46%, #04150f 100%);
+  border:2px solid var(--gold);
+  box-shadow:0 0 0 7px rgba(216,178,101,.16), 0 0 0 13px rgba(216,178,101,.07),
+             0 18px 44px rgba(0,0,0,.55), inset 0 0 26px rgba(0,0,0,.6);
+  animation:breathe 3.4s ease-in-out infinite;
+  transition:transform .55s ease, opacity .5s ease;
+}
+.latch img{width:58%; filter:drop-shadow(0 0 14px rgba(216,178,101,.45))}
+#gate.open .latch{transform:translate(-50%,-50%) scale(.72); opacity:0; animation:none}
+@keyframes breathe{
+  0%,100%{box-shadow:0 0 0 7px rgba(216,178,101,.16), 0 0 0 13px rgba(216,178,101,.07),
+                     0 18px 44px rgba(0,0,0,.55), inset 0 0 26px rgba(0,0,0,.6)}
+  50%    {box-shadow:0 0 0 11px rgba(216,178,101,.22), 0 0 0 20px rgba(216,178,101,.05),
+                     0 18px 44px rgba(0,0,0,.55), inset 0 0 26px rgba(0,0,0,.6)}
+}
+
+.hint{
+  position:absolute; left:0; right:0; top:54%;
+  text-align:center; margin:0; color:#f0d79a;
+  font-family:var(--disp); font-size:10px; letter-spacing:.42em; text-transform:uppercase;
+  animation:breathe2 3.4s ease-in-out infinite;
+}
+/* the pulse sets opacity too, so it has to stop or it wins over the fade */
+#gate.open .hint{opacity:0; animation:none; transition:opacity .3s}
+@keyframes breathe2{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ---------- hero ---------- */
+#hero{
+  min-height:100svh; display:grid; place-items:center; text-align:center;
+  padding:clamp(90px,18vw,140px) 0 clamp(70px,14vw,110px);
+  background:
+    radial-gradient(74% 46% at 50% 38%, rgba(216,178,101,.13), transparent 70%),
+    radial-gradient(120% 72% at 50% 0%, var(--green-hi) 0%, var(--green) 56%),
+    var(--green);
+}
+/* the invocation and the little Ganesh above the monogram */
+#hero .bless{margin:0 auto clamp(20px,4.6vw,30px)}
+#hero .ganesh{
+  display:block; width:clamp(86px,23vw,116px); height:auto; margin:0 auto 14px;
+  filter:drop-shadow(0 0 14px rgba(216,178,101,.34));
+}
+#hero .bless p{
+  margin:0; color:var(--gold); font-family:var(--disp);
+  font-size:clamp(9.5px,2.6vw,11.5px); letter-spacing:.32em; text-transform:uppercase;
+}
+
+#hero .mono{width:clamp(96px,26vw,140px); margin:0 auto clamp(20px,5vw,30px);
+  animation:glowPulse 5.5s ease-in-out infinite}
+@keyframes glowPulse{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(216,178,101,.2))}
+  50%    {filter:drop-shadow(0 0 40px rgba(216,178,101,.45))}
+}
+#hero .names{
+  font-family:var(--script); font-size:clamp(50px,15vw,92px); line-height:1.02;
+  margin:0; color:var(--gold);
+  /* poured gold rather than one flat tone, so the strokes catch the light the
+     way the monogram above them does. The plain colour above is the fallback. */
+  background:linear-gradient(168deg,#f7e4b4 0%,#e3c47f 32%,#cfa454 62%,#f1d79f 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 26px rgba(216,178,101,.3));
+}
+/* text-fill-color inherits, so the little "and" has to opt back out of the
+   gradient or it would be painted from the same pour as the names */
+#hero .amp{display:block; font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size:clamp(17px,4.4vw,22px); color:var(--gold); -webkit-text-fill-color:var(--gold);
+  margin:4px 0; letter-spacing:.06em}
+#hero .when{
+  font-family:var(--disp); font-size:clamp(11px,3.1vw,13px); letter-spacing:.34em;
+  text-transform:uppercase; color:var(--cream-2); margin:clamp(22px,5vw,32px) 0 0;
+}
+#hero .city{font-family:var(--serif); font-style:italic; font-weight:300; color:var(--muted); margin:8px 0 0; letter-spacing:.04em}
+/* Cinzel has no lowercase at all - it draws small capitals instead - so the
+   hashtag is set in Playfair, which keeps the capitals where they belong */
+#hero .tag{margin:clamp(26px,6vw,38px) 0 0; font-family:var(--fig); font-weight:500;
+  font-size:13.5px; letter-spacing:.17em; color:var(--gold)}
+
+/* hanging gold strands across the top of the hero */
+.toran{position:absolute; inset:0 0 auto; height:120px; pointer-events:none; overflow:hidden; z-index:2}
+.toran span{
+  position:absolute; top:-10px; width:1px;
+  background:linear-gradient(var(--gold-lo), rgba(216,178,101,0));
+  animation:sway 6s ease-in-out infinite;
+}
+.toran span::after{
+  content:""; position:absolute; bottom:-4px; left:-2.5px;
+  width:6px; height:6px; border-radius:50%; background:var(--gold); opacity:.8;
+}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+
+.scroll{position:absolute; left:50%; bottom:26px; transform:translateX(-50%); text-align:center; z-index:2}
+.scroll i{display:block; width:1px; height:42px; margin:0 auto 8px; background:linear-gradient(var(--gold),transparent); animation:drip 2.2s ease-in-out infinite}
+.scroll span{font-family:var(--disp); font-size:9px; letter-spacing:.38em; color:var(--gold); text-transform:uppercase}
+@keyframes drip{0%,100%{opacity:.3; transform:scaleY(.6); transform-origin:top}50%{opacity:1; transform:scaleY(1)}}
+
+/* ---------- couple ---------- */
+.person{text-align:center; margin:clamp(34px,8vw,52px) 0 0}
+.person .ring{
+  width:clamp(118px,32vw,156px); aspect-ratio:1; margin:0 auto 20px;
+  border-radius:50%; padding:5px; background:linear-gradient(140deg,var(--gold),rgba(216,178,101,.18),var(--gold));
+}
+.person .ring>*{width:100%; height:100%; border-radius:50%; object-fit:cover; display:grid; place-items:center;
+  background:#efe6d4; color:var(--gold-lo); font-family:var(--script); font-size:52px}
+.person .role{font-family:var(--disp); font-size:10px; letter-spacing:.4em; text-transform:uppercase; color:var(--gold-lo); margin:0 0 8px}
+.person h3{font-family:var(--script); font-weight:400; font-size:clamp(34px,8.5vw,46px); margin:0; line-height:1.1}
+.person .of{font-style:italic; font-weight:300; font-size:15.5px; color:#6d645b; margin:8px 0 0}
+.person .bio{max-width:26em; margin:14px auto 0; font-weight:300; font-size:16px; color:#4b443d}
+/* the couplets are written as two lines and want to be read that way */
+.person .couplet{max-width:23em; font-style:italic; font-weight:600; font-size:16.5px; line-height:1.7; color:#453e37}
+.amp-split{display:flex; align-items:center; gap:14px; margin:clamp(34px,8vw,48px) auto 0; max-width:220px}
+.amp-split i{flex:1; height:1px; background:var(--gold-lo); opacity:.45}
+.amp-split b{font-family:var(--script); font-size:40px; font-weight:400; color:var(--gold-lo); line-height:1}
+
+/* ---------- countdown ---------- */
+#count{background:
+  radial-gradient(90% 70% at 50% 50%, rgba(216,178,101,.11), transparent 72%),
+  linear-gradient(180deg, var(--green-hi), var(--green-lo))}
+.clock{display:flex; justify-content:center; gap:clamp(8px,2.6vw,18px); margin:clamp(28px,7vw,40px) 0 0}
+.clock div{
+  flex:1 1 0; max-width:104px; padding:clamp(12px,3.4vw,18px) 4px;
+  border:1px solid rgba(216,178,101,.32); border-radius:3px; background:rgba(216,178,101,.045);
+}
+.clock b{display:block; font-family:var(--fig); font-weight:500; font-size:clamp(24px,7.4vw,38px); line-height:1; color:#fffaf0; font-variant-numeric:lining-nums tabular-nums}
+.clock span{display:block; font-family:var(--disp); font-size:9px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); margin-top:9px}
+.whenline{text-align:center; margin:clamp(24px,6vw,34px) 0 0; font-family:var(--disp); font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--cream-2)}
+
+/* ---------- events ---------- */
+.events{margin:clamp(30px,7vw,44px) 0 0; display:grid; gap:14px}
+.ev{
+  border:1px solid rgba(160,130,80,.26); border-radius:4px; overflow:hidden;
+  background:#fffdf8;
+}
+/* the heading band of each box carries the green; the time and the venue below
+   it stay on the cream, where they are easiest to read at a glance */
+.ev .top{display:flex; align-items:center; gap:14px; padding:16px clamp(16px,4.4vw,22px);
+  background:var(--green); color:var(--cream)}
+.ev .day{
+  flex:0 0 auto; width:56px; text-align:center; line-height:1;
+  border-right:1px solid rgba(216,178,101,.38); padding-right:14px;
+}
+.ev .day b{display:block; font-family:var(--fig); font-size:26px; font-weight:500; font-variant-numeric:lining-nums; color:#fffaf0}
+.ev .day span{display:block; font-family:var(--disp); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-top:5px}
+.ev .what{flex:1 1 auto; min-width:0}
+.ev .what h4{margin:0; font-family:var(--disp); font-size:clamp(14px,3.8vw,16px); font-weight:600; letter-spacing:.07em; color:#fffaf0}
+.ev .what p{margin:5px 0 0; font-size:14.5px; font-weight:300; font-style:italic; color:rgba(246,239,225,.72)}
+.ev .dot{flex:0 0 auto; width:9px; height:9px; border-radius:50%}
+.ev .meta{padding:14px clamp(16px,4.4vw,22px) 12px; display:grid; gap:7px}
+.ev .meta div{display:flex; gap:9px; align-items:flex-start; font-size:14.5px; font-weight:300}
+/* the venue on each card opens the pin, so it is marked as something to tap */
+.ev .meta a{text-decoration:underline; text-decoration-color:rgba(156,122,60,.45); text-underline-offset:3px}
+.ev .meta a:hover{text-decoration-color:var(--gold-lo)}
+.ev .meta svg{flex:0 0 auto; width:14px; height:14px; margin-top:4px; fill:var(--gold-lo)}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  padding:12px 22px; border:1px solid var(--gold-lo); border-radius:2px;
+  background:none; color:inherit; cursor:pointer;
+  font-family:var(--disp); font-size:10.5px; letter-spacing:.26em; text-transform:uppercase;
+  text-decoration:none; transition:background .3s, color .3s;
+}
+.btn:hover{background:var(--gold-lo); color:#fffdf8}
+.btn svg{width:13px; height:13px; fill:currentColor}
+.ev .act{padding:0 clamp(16px,4.4vw,22px) 16px}
+.ev .btn{border-color:var(--green); color:var(--green)}
+.ev .btn:hover{background:var(--green); color:var(--cream)}
+.center{text-align:center}
+
+/* ---------- places ---------- */
+/* Two cards side by side as soon as there is room for them, which halves the
+   height of this section on anything wider than a phone. The map is given a
+   flat height rather than an aspect ratio, or it grows with the column and
+   takes the card with it. */
+/* Full width, and only as tall as the words inside them. The embedded map was
+   what made these grow - it is a fixed block of a size the card cannot argue
+   with - so the address links out to Maps instead of carrying one. */
+.places{margin:clamp(28px,7vw,40px) 0 0; display:grid; gap:16px}
+.place{
+  border:1px solid rgba(216,178,101,.3); border-radius:4px;
+  background:rgba(216,178,101,.05); text-align:center;
+  padding:clamp(20px,5vw,26px);
+}
+.place .kind{margin:0 0 12px; font-family:var(--disp); font-size:10px; letter-spacing:.38em; text-transform:uppercase; color:var(--gold)}
+.place h4{margin:0; font-family:var(--disp); font-size:clamp(16px,4.4vw,19px); letter-spacing:.1em; color:#fffaf0}
+.place address{margin:10px 0 0; font-style:italic; font-weight:300; color:var(--cream-2); font-size:15.5px}
+.place .btn{margin:18px 0 0; border-color:var(--gold); color:var(--gold)}
+.place .btn:hover{background:var(--gold); color:#0b2e23}
+
+/* ---------- closing ---------- */
+/* cream, like the couple's section - the venue block above it is green, and
+   two greens running into each other read as one long slab */
+#closing{text-align:center; color:#2c2722; background:
+  radial-gradient(80% 60% at 50% 100%, var(--cream-2) 0%, var(--cream) 62%)}
+/* the monogram is a pale rose gold made for the dark half of the page; on the
+   cream it all but disappears, so it is deepened to an antique gold here */
+#closing .mono{width:76px; margin:0 auto clamp(22px,5vw,30px);
+  filter:saturate(1.5) brightness(.72)}
+#closing .eyebrow{color:var(--gold-lo)}
+#closing .sig{font-family:var(--script); font-size:clamp(40px,11vw,64px); margin:0; color:var(--green)}
+#closing .tag{margin:clamp(22px,5vw,30px) 0 0; font-family:var(--fig); font-weight:500;
+  font-size:13.5px; letter-spacing:.17em; color:var(--gold-lo)}
+#closing .foot{margin:clamp(30px,7vw,42px) 0 0; font-size:13px; color:#7a7067; font-weight:300; font-style:italic}
+
+/* ---------- music toggle ---------- */
+#music{
+  position:fixed; right:16px; bottom:16px; z-index:60;
+  width:46px; height:46px; border-radius:50%; cursor:pointer;
+  border:1px solid rgba(216,178,101,.5); background:rgba(7,33,26,.78);
+  backdrop-filter:blur(8px); display:grid; place-items:center; padding:0;
+}
+#music svg{width:18px; height:18px; fill:var(--gold)}
+#music .off{display:none}
+#music.paused .on{display:none}
+#music.paused .off{display:block}
+
+/* ---------- glitter and petals ---------- */
+/* one canvas per green section rather than a single sheet over the page, so
+   the sparkle is bounded by the green and never falls across the cream */
+.sparkle{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1}
+</style>
+
+<noscript><style>
+/* Without scripting the gate has nothing to open it, the reveals have nothing
+   to trigger them and the body is left unable to scroll - the whole page would
+   sit there as a shut door. Everything is simply shown instead. */
+#gate{display:none}
+body.locked{overflow:auto}
+.rv{opacity:1; transform:none}
+#music{display:none}
+.clock{display:none}
+</style></noscript>
+</head>
+
+<body class="locked">
+
+<!-- the gate -->
+<div id="gate" role="button" tabindex="0" aria-label="Open the invitation">
+  <div class="glow"></div>
+  <div class="door l"><div class="arch"><div class="jali"></div></div><div class="rail"></div><div class="lower"></div><div class="frame"></div><div class="stile"></div><div class="studs"></div></div>
+  <div class="door r"><div class="arch"><div class="jali"></div></div><div class="rail"></div><div class="lower"></div><div class="frame"></div><div class="stile"></div><div class="studs"></div></div>
+  <div class="latch"><img src="logo.png" alt="Ankur and Tanisha" /></div>
+  <p class="hint">Tap to open</p>
+</div>
+
+<button id="music" class="paused" aria-label="Play music">
+  <svg class="on" viewBox="0 0 24 24"><path d="M12 3v10.6A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+  <svg class="off" viewBox="0 0 24 24"><path d="M12 3v10.6A4 4 0 1 0 14 17V7h4V3h-6zM3 3l18 18-1.4 1.4L1.6 4.4 3 3z"/></svg>
+</button>
+
+<!-- ================= HERO ================= -->
+<section id="hero" class="sparkly">
+  <div class="toran" id="toran"></div>
+  <div class="wrap">
+    <div class="bless rv">
+      <img class="ganesh" src="ganesh.png" alt="Shree Ganesh" />
+      <p>&#8214; Om Ganeshay Namah &#8214;</p>
+    </div>
+    <img class="mono rv" src="logo.png" alt="Ankur and Tanisha monogram" />
+    <h1 class="names rv">Ankur<span class="amp">and</span>Tanisha</h1>
+    <p class="when rv">20 &middot; 21 November 2026</p>
+    <p class="city rv">Bhopal, Madhya Pradesh</p>
+    <p class="tag rv">#TheANTIqueStory</p>
+  </div>
+  <div class="scroll"><i></i><span>Scroll</span></div>
+</section>
+
+<!-- ================= INVITATION ================= -->
+<section class="light">
+  <div class="wrap">
+    <p class="eyebrow rv">The Invitation</p>
+    <h2 class="rv">Two hearts, one thread</h2>
+    <div class="rule rv"><i></i><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-10.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 3.6C20 15.8 12 21 12 21z"/></svg><i></i></div>
+    <p class="lede rv">
+      Some stories are written long before they are told. With the blessings of
+      our families, we ask you to be there as ours begins &mdash; for every song,
+      every ritual and every quiet moment in between.
+    </p>
+  </div>
+</section>
+
+<!-- ================= THE COUPLE ================= -->
+<section class="light" style="padding-top:0">
+  <div class="wrap">
+
+    <div class="person rv">
+      <div class="ring"><img src="ankur.jpg" alt="Ankur" /></div>
+      <p class="role">The Groom</p>
+      <h3>Ankur Vijay</h3>
+      <p class="of">Son of Smt. Sharda &amp; Shri Lalit Vijay</p>
+      <p class="bio couplet">He builds systems that run without a glitch,<br />
+        and now he&rsquo;s ready for the ultimate upgrade: hitch!</p>
+    </div>
+
+    <div class="amp-split rv"><i></i><b>&amp;</b><i></i></div>
+
+    <div class="person rv">
+      <div class="ring"><img src="tanisha.jpg" alt="Tanisha" /></div>
+      <p class="role">The Bride</p>
+      <h3>Tanisha</h3>
+      <p class="of">Daughter of Smt. Alka &amp; Shri Gopal Vijay</p>
+      <p class="bio couplet">She manages finances with perfect balance and care,<br />
+        and now, she&rsquo;s investing in a love beyond compare.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= COUNTDOWN ================= -->
+<section id="count" class="sparkly">
+  <div class="wrap">
+    <p class="eyebrow rv">Counting down</p>
+    <h2 class="rv">Until we say <em style="font-family:var(--serif); font-style:italic; font-size:.62em">I do</em></h2>
+    <div class="clock rv">
+      <div><b id="cd">00</b><span>Days</span></div>
+      <div><b id="ch">00</b><span>Hrs</span></div>
+      <div><b id="cm">00</b><span>Min</span></div>
+      <div><b id="cs">00</b><span>Sec</span></div>
+    </div>
+    <p class="whenline rv">Saturday, 21 November 2026</p>
+  </div>
+</section>
+
+<!-- ================= EVENTS ================= -->
+<section class="light">
+  <div class="wrap">
+    <p class="eyebrow rv">The Celebrations</p>
+    <h2 class="rv">Save these days</h2>
+    <div class="rule rv"><i></i><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg><i></i></div>
+    <div class="events" id="events"></div>
+  </div>
+</section>
+
+<!-- ================= PLACES ================= -->
+<section id="places" class="sparkly">
+  <div class="wrap">
+    <p class="eyebrow rv">Where to find us</p>
+    <h2 class="rv">In Bhopal</h2>
+    <div class="rule rv"><i></i><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg><i></i></div>
+    <div class="places" id="places-list"></div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<section id="closing">
+  <div class="wrap">
+    <img class="mono rv" src="logo.png" alt="" />
+    <p class="eyebrow rv">With love</p>
+    <p class="sig rv">Ankur &amp; Tanisha</p>
+    <p class="tag rv">#TheANTIqueStory</p>
+    <p class="foot rv">Vijay Family &middot; Faridabad</p>
+  </div>
+</section>
+
+<script>
+/* ============================ YOUR DETAILS ============================
+   Everything the page shows is either in the markup above or in here.
+   EVENTS drives both the schedule and the calendar files, so editing a
+   time or a venue in one place is enough.                              */
+
+const WEDDING = new Date("2026-11-21T19:00:00+05:30");   // drives the countdown
+
+/* The two addresses. `link` is the pin that was shared, and it is what every
+   venue tap on the page opens, so guests always land on exactly the right
+   spot. `at` on each event below points back into this list. */
+const PLACES = [
+  { kind:"Venue",            name:"Tunez Banquet &amp; Lawn",
+    city:"Bhopal, Madhya Pradesh",
+    link:"https://maps.app.goo.gl/5fdLiamjbz2t63qX7" },
+  { kind:"Groom Squad Stay", name:"Hotel Aditya Grand",
+    city:"Bhopal, Madhya Pradesh",
+    link:"https://maps.app.goo.gl/y7kwWcgU4eQLq2VM8" },
+];
+
+const EVENTS = [
+  { d:"20", mon:"Nov", name:"Ganesh Poojan",     note:"Where it all begins",
+    time:"11:00 AM",  venue:"Hotel Aditya Grand",     at:1, dot:"#e2b6ab", mins:120 },
+  { d:"20", mon:"Nov", name:"Haldi Carnival",    note:"Theme &middot; Yellow",
+    time:"1:00 PM",   venue:"Tunez Lawn",             at:0, dot:"#f0d68c", mins:180 },
+  { d:"20", mon:"Nov", name:"Ladies Sangeet",    note:"Bring your dancing shoes",
+    time:"7:00 PM",   venue:"Tunez Lawn",             at:0, dot:"#e8aec0", mins:240 },
+  { d:"21", mon:"Nov", name:"Chaak &amp; Bhaat", note:"Theme &middot; Red",
+    time:"9:00 AM",   venue:"Hotel Aditya Grand",     at:1, dot:"#d98b86", mins:150 },
+  { d:"21", mon:"Nov", name:"Sagai",             note:"The engagement",
+    time:"12:00 PM",  venue:"Tunez Banquet",          at:0, dot:"#bcd6d4", mins:150 },
+  { d:"21", mon:"Nov", name:"Wedding Ceremony",  note:"The vows",
+    time:"7:00 PM",   venue:"Tunez Banquet &amp; Lawn", at:0, dot:"#e6b9c2", mins:300 },
+];
+
+/* the ISO start used for the .ics download, per event */
+const STARTS = ["2026-11-20T11:00","2026-11-20T13:00","2026-11-20T19:00",
+                "2026-11-21T09:00","2026-11-21T12:00","2026-11-21T19:00"];
+
+/* ---------------------------- events list ---------------------------- */
+const icon = {
+  clock:'<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6V6h-2v7.4l5 3 1-1.7-4-2.1z"/></svg>',
+  pin:'<svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>',
+  cal:'<svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 8v10H5V10h14z"/></svg>',
+  nav:'<svg viewBox="0 0 24 24"><path d="M21.4 11.1 12.9 2.6a1.3 1.3 0 0 0-1.8 0L2.6 11.1a1.3 1.3 0 0 0 0 1.8l8.5 8.5a1.3 1.3 0 0 0 1.8 0l8.5-8.5a1.3 1.3 0 0 0 0-1.8zM13 15v-2.5h-2V15l-3-3 3-3v2.5h4V15h-2z"/></svg>',
+};
+
+document.getElementById("events").innerHTML = EVENTS.map((e,i)=>`
+  <article class="ev rv">
+    <div class="top">
+      <div class="day"><b>${e.d}</b><span>${e.mon}</span></div>
+      <div class="what"><h4>${e.name}</h4><p>${e.note}</p></div>
+      <i class="dot" style="background:${e.dot}"></i>
+    </div>
+    <div class="meta">
+      <div>${icon.clock}<span>${e.time}</span></div>
+      <div>${icon.pin}<a href="${PLACES[e.at].link}" target="_blank" rel="noopener">${e.venue}</a></div>
+    </div>
+    <div class="act"><button class="btn" data-ics="${i}">${icon.cal} Add to calendar</button></div>
+  </article>`).join("");
+
+/* ---------------------------- places ---------------------------- */
+document.getElementById("places-list").innerHTML = PLACES.map(p=>`
+  <article class="place rv">
+    <p class="kind">${p.kind}</p>
+    <h4>${p.name}</h4>
+    <address>${p.city}</address>
+    <a class="btn" target="_blank" rel="noopener" href="${p.link}">${icon.nav} Open in Maps</a>
+  </article>`).join("");
+
+/* An .ics is built in the browser, so the page stays a single file with
+   nothing behind it - the download works even opened straight off a phone. */
+document.getElementById("events").addEventListener("click", ev=>{
+  const b = ev.target.closest("[data-ics]");
+  if(!b) return;
+  const i = +b.dataset.ics, e = EVENTS[i];
+  const pad = n=>String(n).padStart(2,"0");
+  const stamp = d=>d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"
+                  +pad(d.getUTCHours())+pad(d.getUTCMinutes())+"00Z";
+  const start = new Date(STARTS[i]+":00+05:30");
+  const end   = new Date(start.getTime()+e.mins*60000);
+  const strip = s=>s.replace(/&amp;/g,"&").replace(/&middot;/g,"-");
+  /* commas and semicolons separate fields in an .ics, so any that belong to
+     the text itself have to be escaped or the entry arrives mangled */
+  const esc = s=>strip(s).replace(/[\\;,]/g, m=>"\\"+m);
+  const place = PLACES[e.at];
+  const ics = [
+    "BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Ankur & Tanisha//EN","BEGIN:VEVENT",
+    "UID:at-"+i+"@theantiquestory",
+    "DTSTAMP:"+stamp(new Date()),
+    "DTSTART:"+stamp(start), "DTEND:"+stamp(end),
+    "SUMMARY:"+esc(e.name)+" - Ankur & Tanisha",
+    "LOCATION:"+esc(strip(e.venue)+", "+place.city),
+    "DESCRIPTION:"+esc("#TheANTIqueStory")+"\\n"+place.link,
+    "END:VEVENT","END:VCALENDAR"
+  ].join("\r\n");
+  const url = URL.createObjectURL(new Blob([ics],{type:"text/calendar"}));
+  const a = Object.assign(document.createElement("a"),
+            {href:url, download:strip(e.name).replace(/\s+/g,"-")+".ics"});
+  a.click(); URL.revokeObjectURL(url);
+});
+
+/* ---------------------------- countdown ---------------------------- */
+const pad2 = n=>String(Math.max(0,n)).padStart(2,"0");
+function tick(){
+  const s = Math.max(0, (WEDDING - Date.now())/1000)|0;
+  document.getElementById("cd").textContent = pad2(s/86400|0);
+  document.getElementById("ch").textContent = pad2(s/3600%24|0);
+  document.getElementById("cm").textContent = pad2(s/60%60|0);
+  document.getElementById("cs").textContent = pad2(s%60);
+}
+tick(); setInterval(tick,1000);
+
+/* ---------------------------- reveal ---------------------------- */
+const io = new IntersectionObserver(es=>{
+  es.forEach(x=>{ if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target); } });
+}, {rootMargin:"0px 0px -12% 0px"});
+document.querySelectorAll(".rv").forEach((el,i)=>{
+  el.style.transitionDelay = (i%6)*70+"ms";
+  io.observe(el);
+});
+
+/* ---------------------------- hanging strands ---------------------------- */
+document.getElementById("toran").innerHTML =
+  Array.from({length:19},(_,i)=>{
+    const h = 34 + Math.abs(Math.sin(i*1.7))*58;
+    return `<span style="left:${(i+.5)/19*100}%;height:${h}px;animation-delay:${i*.18}s"></span>`;
+  }).join("");
+/* ------------------------- glitter and petals -------------------------
+   Every green section gets its own canvas rather than one fixed sheet over
+   the whole page, so the sparkle stops exactly where the green stops and
+   never drifts across the cream sections in between.
+
+   Three things are drawn on each: motes and four-pointed glints, which both
+   slide down and to the right, and petals, which fall straight from top to
+   bottom and turn over as they go. Touching a section throws off sparks.  */
+(()=>{
+  const rnd = (a,b)=>a+Math.random()*(b-a);
+  const pick = a=>a[(Math.random()*a.length)|0];
+  /* Windows hides this behind a plain "animation effects" switch, so plenty of
+     people have it set without ever meaning to ask for a still page. Freezing
+     the field outright just looked broken; it runs slower and thinner instead,
+     which is gentle enough for a preference about ambient drift. */
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const RATE = calm ? .5 : 1;
+  const PETAL = ["#f6e3bb","#eccfae","#e7bda9","#f3e9d6","#dfae95"];
+  const layers = [];
+
+  /* A piece that has left comes back in along whichever edges it can enter
+     from, picked in proportion to their length so the flow stays even. On the
+     first fill they are scattered over the whole section instead, or there
+     would be a bare corner until the stream reached it. */
+  function entry(o, L, seed, m){
+    if(seed){ o.x = rnd(0, L.w); o.y = rnd(0, L.h); }
+    else if(Math.random() < L.w/(L.w+L.h)){ o.x = rnd(-m, L.w); o.y = rnd(-m, -2); }
+    else { o.x = rnd(-m, -2); o.y = rnd(-m, L.h); }
+    return o;
+  }
+  const newMote = (L,seed)=> entry({ r:rnd(.7,2.3), s:rnd(.12,.42),
+                                     d:rnd(0,7), a:rnd(.1,.36) }, L, seed, 8);
+  /* stars are sized against the section they are in - a fixed radius that
+     looks right over the full-height hero is far too loud on a short one */
+  const newGlint = (L,seed)=> entry({ r:rnd(5,14)*L.scale, sp:rnd(.0026,.0072), v:rnd(.22,.6),
+                                      t:seed?rnd(0,1):0, hot:Math.random()<.35 }, L, seed, 44);
+
+  /* petals only ever enter from above, however they left */
+  const newPetal = (L,seed)=>({
+    x:rnd(-10, L.w+10), y: seed ? rnd(0, L.h) : rnd(-40, -10),
+    r:rnd(6, 13), vy:rnd(.45, 1.15), a:rnd(.45, .85), col:pick(PETAL),
+    sw:rnd(0,7), sws:rnd(.009,.022), amp:rnd(.25,.85),
+    rot:rnd(0,7), rs:rnd(-.012,.012), turn:rnd(0,7), ts:rnd(.008,.021),
+  });
+
+  /* a four-pointed glint: soft halo, hard star on top */
+  function star(x, px, py, r, a, hot){
+    if(r < .4 || a <= 0) return;
+    x.globalAlpha = Math.min(1, a);
+    const g = x.createRadialGradient(px, py, 0, px, py, r*1.9);
+    g.addColorStop(0, hot ? "rgba(255,251,238,.85)" : "rgba(243,219,164,.7)");
+    g.addColorStop(1, "rgba(216,178,101,0)");
+    x.fillStyle = g;
+    x.beginPath(); x.arc(px, py, r*1.9, 0, 7); x.fill();
+    const k = r*.16;
+    x.fillStyle = hot ? "#fffdf6" : "#f1d79f";
+    x.beginPath();
+    x.moveTo(px, py-r);   x.lineTo(px+k, py-k); x.lineTo(px+r, py);
+    x.lineTo(px+k, py+k); x.lineTo(px, py+r);   x.lineTo(px-k, py+k);
+    x.lineTo(px-r, py);   x.lineTo(px-k, py-k); x.closePath(); x.fill();
+  }
+
+  /* two curves meeting at a point. Squashing it vertically by the cosine of
+     its own turn angle is what sells the tumble - at the quarter turn the
+     shape goes to a thin line, which is a petal seen edge on. */
+  function petal(x, p){
+    x.save();
+    x.translate(p.x, p.y);
+    x.rotate(p.rot);
+    x.scale(1, Math.cos(p.turn));
+    x.globalAlpha = p.a;
+    x.fillStyle = p.col;
+    const r = p.r;
+    x.beginPath();
+    x.moveTo(0, -r);
+    x.bezierCurveTo( r*.80, -r*.40,  r*.60,  r*.66, 0, r);
+    x.bezierCurveTo(-r*.60,  r*.66, -r*.80, -r*.40, 0, -r);
+    x.fill();
+    x.restore();
+  }
+
+  function fit(L){
+    const b = L.el.getBoundingClientRect();
+    const w = Math.max(1, Math.round(b.width)), h = Math.max(1, Math.round(b.height));
+    if(w === L.w && h === L.h) return;    // refilling for nothing would reshuffle the field
+    /* setting the width wipes the canvas, and a section that is off screen has
+       no loop running to put it back, so it is repainted here either way */
+    L.w = L.c.width = w; L.h = L.c.height = h;
+    L.scale = Math.min(1, Math.max(.62, h/760));
+    const d = calm ? .6 : 1;
+    const n = (per, cap)=> Math.max(4, Math.round(Math.min(cap, L.w*L.h/per)*d));
+    L.motes  = Array.from({length:n(10000, 54)}, ()=>newMote(L,true));
+    L.glints = Array.from({length:n(21000, 28)}, ()=>newGlint(L,true));
+    L.petals = Array.from({length:n(15000, 32)}, ()=>newPetal(L,true));
+    L.sparks = [];
+    draw(L);
+  }
+
+  function draw(L){
+    const x = L.x, w = L.w, h = L.h;
+    x.clearRect(0, 0, w, h);
+
+    for(const m of L.motes){
+      m.d += .012*RATE;
+      m.y += m.s*RATE;
+      m.x += (m.s*1.05 + Math.sin(m.d)*.26)*RATE;   // the sway rides on the drift
+      if(m.y > h+8 || m.x > w+8) Object.assign(m, newMote(L));
+      x.globalAlpha = m.a; x.fillStyle = "#d8b265";
+      x.beginPath(); x.arc(m.x, m.y, m.r, 0, 7); x.fill();
+    }
+
+    for(const p of L.petals){
+      p.y += p.vy*RATE;
+      p.sw += p.sws*RATE; p.x += Math.sin(p.sw)*p.amp*RATE;
+      p.rot += p.rs*RATE; p.turn += p.ts*RATE;
+      if(p.y > h + p.r*2.5) Object.assign(p, newPetal(L));
+      petal(x, p);
+    }
+
+    for(const g of L.glints){
+      g.t += g.sp*RATE;
+      g.y += g.v*RATE; g.x += g.v*1.05*RATE;
+      if(g.t >= 1 || g.x > w+44 || g.y > h+44) Object.assign(g, newGlint(L));
+      const k = Math.sin(g.t*Math.PI);          // swells, then closes again
+      star(x, g.x, g.y, g.r*k, k*.8, g.hot);
+    }
+
+    for(let i = L.sparks.length-1; i >= 0; i--){
+      const s = L.sparks[i];
+      s.x += s.vx; s.y += s.vy;
+      s.vy += .055; s.vx = s.vx*.985 + .015;    // falls away, and leans with the drift
+      s.life -= .017;
+      if(s.life <= 0){ L.sparks.splice(i,1); continue; }
+      star(x, s.x, s.y, s.r*s.life, s.life*1.3, true);
+    }
+
+    x.globalAlpha = 1;
+  }
+
+  function frame(){
+    for(const L of layers) if(L.live) draw(L);
+    requestAnimationFrame(frame);
+  }
+
+  /* only the sections actually on screen are animated */
+  const watch = new IntersectionObserver(es=>{
+    for(const e of es) e.target._layer.live = e.isIntersecting;
+  }, {threshold:0});
+
+  /* Sections change height for reasons a resize event never reports - the web
+     fonts arriving is the usual one - so each is measured directly. fit()
+     ignores a call that is not an actual size change. */
+  let rt;
+  const size = new ResizeObserver(()=>{
+    clearTimeout(rt);
+    rt = setTimeout(()=>layers.forEach(fit), 160);
+  });
+
+  for(const el of document.querySelectorAll(".sparkly")){
+    const c = document.createElement("canvas");
+    c.className = "sparkle";
+    el.prepend(c);
+    const L = { el, c, x:c.getContext("2d"), live:false, w:0, h:0, scale:1,
+                motes:[], glints:[], petals:[], sparks:[] };
+    el._layer = L;
+    layers.push(L);
+    fit(L);
+    watch.observe(el);
+    size.observe(el);
+  }
+
+  /* sparks land on whichever section is under the finger, in its own coordinates */
+  function burst(cx, cy, n, spread){
+    for(const L of layers){
+      const b = L.el.getBoundingClientRect();
+      if(cx < b.left || cx > b.right || cy < b.top || cy > b.bottom) continue;
+      const px = cx-b.left, py = cy-b.top;
+      for(let i = 0; i < n; i++){
+        const a = rnd(0, Math.PI*2), v = rnd(.5, spread);
+        L.sparks.push({ x:px, y:py, vx:Math.cos(a)*v, vy:Math.sin(a)*v - .7,
+                        r:rnd(4,11), life:rnd(.6,1) });
+      }
+      if(L.sparks.length > 240) L.sparks.splice(0, L.sparks.length-240);
+      return;
+    }
+  }
+
+  let last = 0;
+  addEventListener("pointermove", e=>{
+    const now = performance.now();
+    if(now - last < 34) return;               // a trail, not a firehose
+    last = now;
+    burst(e.clientX, e.clientY, 2, 1.1);
+  }, {passive:true});
+  addEventListener("pointerdown", e=>burst(e.clientX, e.clientY, 18, 3.4), {passive:true});
+
+  frame();
+})();
+
+/* ---------------------------- music ---------------------------- */
+/* Autoplay with sound is blocked everywhere, so the song waits for the
+   first tap - which is also what dismisses the opening curtain. */
+const audio = new Audio("song.mp3");
+audio.loop = true; audio.volume = .55;
+const btn = document.getElementById("music");
+btn.addEventListener("click", ()=>{
+  if(audio.paused){ audio.play().then(()=>btn.classList.remove("paused")).catch(()=>{}); }
+  else { audio.pause(); btn.classList.add("paused"); }
+});
+
+/* ---------------------------- opening the gate ---------------------------- */
+const gate = document.getElementById("gate");
+function openGate(){
+  if(gate.classList.contains("open")) return;
+  gate.classList.add("open");
+  document.body.classList.remove("locked");
+  /* the tap that opens the gate is also the gesture browsers want before
+     they will let the song start */
+  audio.play().then(()=>btn.classList.remove("paused")).catch(()=>{});
+  setTimeout(()=>gate.remove(), 2800);
+}
+gate.addEventListener("click", openGate);
+gate.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openGate(); } });
+</script>
+</body>
+</html>
