@@ -195,12 +195,14 @@ h2{
 .hint{
   position:absolute; left:0; right:0; top:54%;
   text-align:center; margin:0; color:#f0d79a;
-  font-family:var(--disp); font-size:10px; letter-spacing:.42em; text-transform:uppercase;
+  font-family:var(--disp); font-size:clamp(13px,3.4vw,15px); letter-spacing:.34em;
+  text-transform:uppercase; text-shadow:0 2px 10px rgba(0,0,0,.5);
   animation:breathe2 3.4s ease-in-out infinite;
 }
 /* the pulse sets opacity too, so it has to stop or it wins over the fade */
 #gate.open .hint{opacity:0; animation:none; transition:opacity .3s}
-@keyframes breathe2{0%,100%{opacity:.5}50%{opacity:1}}
+/* it never drops far enough to be hard to read at the bottom of the pulse */
+@keyframes breathe2{0%,100%{opacity:.72}50%{opacity:1}}
 
 /* ---------- hero ---------- */
 #hero{
@@ -376,7 +378,6 @@ h2{
 #closing .sig{font-family:var(--script); font-size:clamp(40px,11vw,64px); margin:0; color:var(--green)}
 #closing .tag{margin:clamp(22px,5vw,30px) 0 0; font-family:var(--fig); font-weight:500;
   font-size:13.5px; letter-spacing:.17em; color:var(--gold-lo)}
-#closing .foot{margin:clamp(30px,7vw,42px) 0 0; font-size:13px; color:#7a7067; font-weight:300; font-style:italic}
 
 /* ---------- music toggle ---------- */
 #music{
@@ -462,7 +463,7 @@ body.locked{overflow:auto}
     <div class="person rv">
       <div class="ring"><img src="ankur.jpg" alt="Ankur" /></div>
       <p class="role">The Groom</p>
-      <h3>Ankur Vijay</h3>
+      <h3>Ankur</h3>
       <p class="of">Son of Smt. Sharda &amp; Shri Lalit Vijay</p>
       <p class="bio couplet">He builds systems that run without a glitch,<br />
         and now he&rsquo;s ready for the ultimate upgrade: hitch!</p>
@@ -524,7 +525,6 @@ body.locked{overflow:auto}
     <p class="eyebrow rv">With love</p>
     <p class="sig rv">Ankur &amp; Tanisha</p>
     <p class="tag rv">#TheANTIqueStory</p>
-    <p class="foot rv">Vijay Family &middot; Faridabad</p>
   </div>
 </section>
 
